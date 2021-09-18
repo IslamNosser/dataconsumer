@@ -1,30 +1,52 @@
 package com.orange.matrixx.objects;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.apache.flink.api.common.typeinfo.TypeHint;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.streaming.util.serialization.DeserializationSchema;
-import org.apache.flink.streaming.util.serialization.SerializationSchema;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MeterUpdateArray {
-	@JsonProperty("MtxMeterUpdate")
-	public List<MtxMeterUpdate> mtxMeterUpdate;
+	public int amount;
+	public String mtx_container_name;
+	public int mtx_ext_ver;
+	public int mtx_sys_ver;
+	public int templateId;
 
-	public List<MtxMeterUpdate> getMtxMeterUpdate() {
-		return mtxMeterUpdate;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setMtxMeterUpdate(List<MtxMeterUpdate> mtxMeterUpdate) {
-		this.mtxMeterUpdate = mtxMeterUpdate;
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getMtx_container_name() {
+		return mtx_container_name;
+	}
+
+	public void setMtx_container_name(String mtx_container_name) {
+		this.mtx_container_name = mtx_container_name;
+	}
+
+	public int getMtx_ext_ver() {
+		return mtx_ext_ver;
+	}
+
+	public void setMtx_ext_ver(int mtx_ext_ver) {
+		this.mtx_ext_ver = mtx_ext_ver;
+	}
+
+	public int getMtx_sys_ver() {
+		return mtx_sys_ver;
+	}
+
+	public void setMtx_sys_ver(int mtx_sys_ver) {
+		this.mtx_sys_ver = mtx_sys_ver;
+	}
+
+	public int getTemplateId() {
+		return templateId;
+	}
+
+	public void setTemplateId(int templateId) {
+		this.templateId = templateId;
 	}
 }

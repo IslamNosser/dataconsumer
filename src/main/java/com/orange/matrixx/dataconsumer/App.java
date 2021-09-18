@@ -10,6 +10,8 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 
 import com.orange.matrixx.aggregationclasses.DataAggregation;
 import com.orange.matrixx.constants.ConfigurationConstants;
+import com.orange.matrixx.modeling.EDRModeling;
+import com.orange.matrixx.modelingobjects.EDRModel;
 import com.orange.matrixx.objects.OEGEvent;
 import com.orange.matrixx.utils.ConstantUtilities;
 
@@ -19,7 +21,9 @@ import com.orange.matrixx.utils.ConstantUtilities;
  */
 public class App {
 	public static void main(String[] args) {
-		String group = "testgroup";
+		String consumer_topic_name = args[0];
+		String producer_topic_name = args[1];
+		String group = args[2];
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 		ConstantUtilities.loadConstants();
 		Properties properties = new Properties();
@@ -32,21 +36,15 @@ public class App {
 		properties.put("value.serializer", "org.apache.kafka.common.serialization.ByteArraySerializer");
 
 		try {
-			System.out.println("###################### JOB STARTED ########################");
 			KafkaSource<OEGEvent> source = KafkaSource.<OEGEvent>builder()
-					.setBootstrapServers(ConfigurationConstants.bootStrapServer)
-					.setTopics(ConfigurationConstants.consumerTopicName).setGroupId("grp-1")
-					.setStartingOffsets(OffsetsInitializer.earliest()).setValueOnlyDeserializer(new OEGEvent()).build();
-			System.out.println("###################### ADD SOURCE ########################");
-			env.fromSource(source, WatermarkStrategy.noWatermarks(), "dataconsumer").keyBy(value -> value.aggregationId)
-					.reduce(new DataAggregation())
-					.addSink(new FlinkKafkaProducer<>(ConfigurationConstants.producerTopicName, new OEGEvent(),
-							properties))
+					.setBootstrapServers(ConfigurationConstants.bootStrapServer).setTopics(consumer_topic_name)
+					.setGroupId(group).setStartingOffsets(OffsetsInitializer.earliest())
+					.setValueOnlyDeserializer(new OEGEvent()).build();
+			env.fromSource(source, WatermarkStrategy.noWatermarks(), "dataconsumer").map(new EDRModeling())
+					.addSink(new FlinkKafkaProducer<>(producer_topic_name, new EDRModel(), properties))
 					.name("ERDModeling");
 			env.execute("dataconsumer");
-			System.out.println("###################### EXECUTION ########################");
 		} catch (Exception ex) {
-			System.out.println("###################### THIS IS ERROR ########################");
 			ex.printStackTrace();
 		}
 	}

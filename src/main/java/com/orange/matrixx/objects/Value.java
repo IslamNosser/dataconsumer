@@ -3,20 +3,11 @@ package com.orange.matrixx.objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CatalogItemTemplateAttr {
-	public String externalProductId;
+public class Value {
 	public String mtx_container_name;
 	public int mtx_ext_ver;
 	public int mtx_sys_ver;
-	public String offerType;
-
-	public String getExternalProductId() {
-		return externalProductId;
-	}
-
-	public void setExternalProductId(String externalProductId) {
-		this.externalProductId = externalProductId;
-	}
+	public double value;
 
 	public String getMtx_container_name() {
 		return mtx_container_name;
@@ -42,11 +33,11 @@ public class CatalogItemTemplateAttr {
 		this.mtx_sys_ver = mtx_sys_ver;
 	}
 
-	public String getOfferType() {
-		return offerType;
+	public double getValue() {
+		return value;
 	}
 
-	public void setOfferType(String offerType) {
-		this.offerType = offerType;
+	public void setValue(double value) {
+		this.value = value;
 	}
 }

@@ -1,30 +1,88 @@
 package com.orange.matrixx.objects;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.apache.flink.api.common.typeinfo.TypeHint;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.streaming.util.serialization.DeserializationSchema;
-import org.apache.flink.streaming.util.serialization.SerializationSchema;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AppliedBundleArray {
-	@JsonProperty("MtxEventAppliedBundle")
-	public List<MtxEventAppliedBundle> mtxEventAppliedBundle;
+	public int appliedCatalogItemIndex;
+	public String bundleExternalId;
+	public int bundleId;
+	public int bundleResourceId;
+	public int bundleVersion;
+	public String mtx_container_name;
+	public int mtx_ext_ver;
+	public int mtx_sys_ver;
+	public PurchasedBundleAttr purchasedBundleAttr;
 
-	public List<MtxEventAppliedBundle> getMtxEventAppliedBundle() {
-		return mtxEventAppliedBundle;
+	public int getAppliedCatalogItemIndex() {
+		return appliedCatalogItemIndex;
 	}
 
-	public void setMtxEventAppliedBundle(List<MtxEventAppliedBundle> mtxEventAppliedBundle) {
-		this.mtxEventAppliedBundle = mtxEventAppliedBundle;
+	public void setAppliedCatalogItemIndex(int appliedCatalogItemIndex) {
+		this.appliedCatalogItemIndex = appliedCatalogItemIndex;
+	}
+
+	public String getBundleExternalId() {
+		return bundleExternalId;
+	}
+
+	public void setBundleExternalId(String bundleExternalId) {
+		this.bundleExternalId = bundleExternalId;
+	}
+
+	public int getBundleId() {
+		return bundleId;
+	}
+
+	public void setBundleId(int bundleId) {
+		this.bundleId = bundleId;
+	}
+
+	public int getBundleResourceId() {
+		return bundleResourceId;
+	}
+
+	public void setBundleResourceId(int bundleResourceId) {
+		this.bundleResourceId = bundleResourceId;
+	}
+
+	public int getBundleVersion() {
+		return bundleVersion;
+	}
+
+	public void setBundleVersion(int bundleVersion) {
+		this.bundleVersion = bundleVersion;
+	}
+
+	public String getMtx_container_name() {
+		return mtx_container_name;
+	}
+
+	public void setMtx_container_name(String mtx_container_name) {
+		this.mtx_container_name = mtx_container_name;
+	}
+
+	public int getMtx_ext_ver() {
+		return mtx_ext_ver;
+	}
+
+	public void setMtx_ext_ver(int mtx_ext_ver) {
+		this.mtx_ext_ver = mtx_ext_ver;
+	}
+
+	public int getMtx_sys_ver() {
+		return mtx_sys_ver;
+	}
+
+	public void setMtx_sys_ver(int mtx_sys_ver) {
+		this.mtx_sys_ver = mtx_sys_ver;
+	}
+
+	public PurchasedBundleAttr getPurchasedBundleAttr() {
+		return purchasedBundleAttr;
+	}
+
+	public void setPurchasedBundleAttr(PurchasedBundleAttr purchasedBundleAttr) {
+		this.purchasedBundleAttr = purchasedBundleAttr;
 	}
 }

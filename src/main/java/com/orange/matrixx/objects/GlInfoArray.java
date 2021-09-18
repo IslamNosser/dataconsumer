@@ -3,24 +3,40 @@ package com.orange.matrixx.objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChargeList {
-	public int amount;
+public class GlInfoArray {
+	public String account1;
+	public String account2;
+	public double amount;
 	public int appliedOfferIndex;
 	public int balanceUpdateIndex;
-	public String impactSource;
 	public String mtx_container_name;
 	public int mtx_ext_ver;
 	public int mtx_sys_ver;
-	public int paymentType;
+	public int revenueRecognitionType;
+	public int txnType;
 	public int updateType;
-	public int usageQuantity;
-	public int usageQuantityUnit;
 
-	public int getAmount() {
+	public String getAccount1() {
+		return account1;
+	}
+
+	public void setAccount1(String account1) {
+		this.account1 = account1;
+	}
+
+	public String getAccount2() {
+		return account2;
+	}
+
+	public void setAccount2(String account2) {
+		this.account2 = account2;
+	}
+
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
@@ -38,14 +54,6 @@ public class ChargeList {
 
 	public void setBalanceUpdateIndex(int balanceUpdateIndex) {
 		this.balanceUpdateIndex = balanceUpdateIndex;
-	}
-
-	public String getImpactSource() {
-		return impactSource;
-	}
-
-	public void setImpactSource(String impactSource) {
-		this.impactSource = impactSource;
 	}
 
 	public String getMtx_container_name() {
@@ -72,12 +80,20 @@ public class ChargeList {
 		this.mtx_sys_ver = mtx_sys_ver;
 	}
 
-	public int getPaymentType() {
-		return paymentType;
+	public int getRevenueRecognitionType() {
+		return revenueRecognitionType;
 	}
 
-	public void setPaymentType(int paymentType) {
-		this.paymentType = paymentType;
+	public void setRevenueRecognitionType(int revenueRecognitionType) {
+		this.revenueRecognitionType = revenueRecognitionType;
+	}
+
+	public int getTxnType() {
+		return txnType;
+	}
+
+	public void setTxnType(int txnType) {
+		this.txnType = txnType;
 	}
 
 	public int getUpdateType() {
@@ -86,21 +102,5 @@ public class ChargeList {
 
 	public void setUpdateType(int updateType) {
 		this.updateType = updateType;
-	}
-
-	public int getUsageQuantity() {
-		return usageQuantity;
-	}
-
-	public void setUsageQuantity(int usageQuantity) {
-		this.usageQuantity = usageQuantity;
-	}
-
-	public int getUsageQuantityUnit() {
-		return usageQuantityUnit;
-	}
-
-	public void setUsageQuantityUnit(int usageQuantityUnit) {
-		this.usageQuantityUnit = usageQuantityUnit;
 	}
 }
