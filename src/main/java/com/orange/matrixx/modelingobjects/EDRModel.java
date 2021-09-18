@@ -15,54 +15,100 @@ import com.orange.matrixx.objects.OEGEvent;
 public class EDRModel implements DeserializationSchema<EDRModel>, SerializationSchema<EDRModel> {
 	ObjectMapper mapper;
 	String eventId;
-	String initiatorId;
-	String initiatorExternalId;
-	String initiatorDeviceId;
-	String initiatorDeviceExternalId;
-	String walletId;
-	String walletOwnerId;
-	String walletOwnerExternalId;
-	int walletOwnerType;
-	int flags;
-	Date eventTime;
-	int duration;
 	String associatedEventId;
-	String initiatorPrimaryUserId;
-	String initiatorPrimaryUserExternalId;
-	int initiatorType;
-	String aggregationId;
-	String sessionIdCust;
-	String callUsageType;
-	String eventClass;
-	int serviceId;
-	String APartyMsisdn;
-	String BPartyMsisdn;
-	String MSISDN;
-	String VLRInfo;
-	String lac;
-	String cid;
+	Date eventTime;
+	Integer eventType;
+	String AParty;
+	String BParty;
 	String apn;
+	String cellId;
+	String lac;
+	String callType;
+	String callUsageType;
+	String imsi;
+	String sim;
+	String mscAddress;
+	String networkCallId;
+	Integer onNet;
+	String sessionId;
+	String walletOwner;
+	Integer roamingFlag;
+	String chargedPartyMccMnc;
+	String originationCarrier;
+	Integer ratingGroup;
+	
+	String walletId;
+	
+	String aggregationId;
+	Integer serviceId;
+	
 	String applicationName;
 	String applicationCategory;
-	String sgsnIpAddress;
-	String imsi;
-	String chargedPartyCountry;
-	String otherPartyCountry;
+	String sgsnIp;
+	
 	String roamingCarrier;
-	int roamingFlag;
 	String subscriberType;
-	int usageUtcOffset;
+	Integer usageUtcOffset;
+	
+	Double usageQuantityAmount;
+	Double usageQuantityRatingAmount;
+	String usageQuantityUnit;
+	
 	String info;
 	String reason;
-	String meterUpdateArray;
-	String offerInfoArray;
-	String bundleInfoArray;
-	String usageQuantityList;
-	String balanceUpdateChargeList;
-	String appliedOfferBundleCatalogItemArray;
-	int usageVolume;
-	int roundedUsageVolume;
-	int chargedAmount;
+	
+	String meterUpdate;
+	String offerInfo;
+	String bundleInfo;
+	String cycleCatalog;
+
+	String appliedOfferBalanceUpdateChargeGlInfo;
+	
+	Double usageVolume;
+	Double roundedUsageVolume;
+	Double chargedAmount;
+	
+	Integer deleteCode;
+	
+	public String getCycleCatalog() {
+		return cycleCatalog;
+	}
+
+	public void setCycleCatalog(String cycleCatalog) {
+		this.cycleCatalog = cycleCatalog;
+	}
+	
+	public Integer getDeleteCode() {
+		return deleteCode;
+	}
+
+	public void setDeleteCode(Integer deleteCode) {
+		this.deleteCode = deleteCode;
+	}
+
+	public Double getUsageQuantityAmount() {
+		return usageQuantityAmount;
+	}
+
+	public void setUsageQuantityAmount(Double usageQuantityAmount) {
+		this.usageQuantityAmount = usageQuantityAmount;
+	}
+
+	public Double getUsageQuantityRatingAmount() {
+		return usageQuantityRatingAmount;
+	}
+
+	public void setUsageQuantityRatingAmount(Double usageQuantityRatingAmount) {
+		this.usageQuantityRatingAmount = usageQuantityRatingAmount;
+	}
+
+	public String getUsageQuantityUnit() {
+		return usageQuantityUnit;
+	}
+
+	public void setUsageQuantityUnit(String usageQuantityUnit) {
+		this.usageQuantityUnit = usageQuantityUnit;
+	}
 
 	public String getEventId() {
 		return eventId;
@@ -71,38 +117,14 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 	public void setEventId(String eventId) {
 		this.eventId = eventId;
 	}
-
-	public String getInitiatorId() {
-		return initiatorId;
+	public Integer getEventType() {
+		return eventType;
 	}
 
-	public void setInitiatorId(String initiatorId) {
-		this.initiatorId = initiatorId;
+	public void setEventType(Integer eventType) {
+		this.eventType = eventType;
 	}
 
-	public String getInitiatorExternalId() {
-		return initiatorExternalId;
-	}
-
-	public void setInitiatorExternalId(String initiatorExternalId) {
-		this.initiatorExternalId = initiatorExternalId;
-	}
-
-	public String getInitiatorDeviceId() {
-		return initiatorDeviceId;
-	}
-
-	public void setInitiatorDeviceId(String initiatorDeviceId) {
-		this.initiatorDeviceId = initiatorDeviceId;
-	}
-
-	public String getInitiatorDeviceExternalId() {
-		return initiatorDeviceExternalId;
-	}
-
-	public void setInitiatorDeviceExternalId(String initiatorDeviceExternalId) {
-		this.initiatorDeviceExternalId = initiatorDeviceExternalId;
-	}
 
 	public String getWalletId() {
 		return walletId;
@@ -110,38 +132,6 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 
 	public void setWalletId(String walletId) {
 		this.walletId = walletId;
-	}
-
-	public String getWalletOwnerId() {
-		return walletOwnerId;
-	}
-
-	public void setWalletOwnerId(String walletOwnerId) {
-		this.walletOwnerId = walletOwnerId;
-	}
-
-	public String getWalletOwnerExternalId() {
-		return walletOwnerExternalId;
-	}
-
-	public void setWalletOwnerExternalId(String walletOwnerExternalId) {
-		this.walletOwnerExternalId = walletOwnerExternalId;
-	}
-
-	public int getWalletOwnerType() {
-		return walletOwnerType;
-	}
-
-	public void setWalletOwnerType(int walletOwnerType) {
-		this.walletOwnerType = walletOwnerType;
-	}
-
-	public int getFlags() {
-		return flags;
-	}
-
-	public void setFlags(int flags) {
-		this.flags = flags;
 	}
 
 	public Date getEventTime() {
@@ -152,44 +142,12 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.eventTime = eventTime;
 	}
 
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-
 	public String getAssociatedEventId() {
 		return associatedEventId;
 	}
 
 	public void setAssociatedEventId(String associatedEventId) {
 		this.associatedEventId = associatedEventId;
-	}
-
-	public String getInitiatorPrimaryUserId() {
-		return initiatorPrimaryUserId;
-	}
-
-	public void setInitiatorPrimaryUserId(String initiatorPrimaryUserId) {
-		this.initiatorPrimaryUserId = initiatorPrimaryUserId;
-	}
-
-	public String getInitiatorPrimaryUserExternalId() {
-		return initiatorPrimaryUserExternalId;
-	}
-
-	public void setInitiatorPrimaryUserExternalId(String initiatorPrimaryUserExternalId) {
-		this.initiatorPrimaryUserExternalId = initiatorPrimaryUserExternalId;
-	}
-
-	public int getInitiatorType() {
-		return initiatorType;
-	}
-
-	public void setInitiatorType(int initiatorType) {
-		this.initiatorType = initiatorType;
 	}
 
 	public String getAggregationId() {
@@ -200,12 +158,12 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.aggregationId = aggregationId;
 	}
 
-	public String getSessionIdCust() {
-		return sessionIdCust;
+	public String getCallType() {
+		return callType;
 	}
 
-	public void setSessionIdCust(String sessionIdCust) {
-		this.sessionIdCust = sessionIdCust;
+	public void setCallType(String callType) {
+		this.callType = callType;
 	}
 
 	public String getCallUsageType() {
@@ -216,52 +174,28 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.callUsageType = callUsageType;
 	}
 
-	public String getEventClass() {
-		return eventClass;
-	}
-
-	public void setEventClass(String eventClass) {
-		this.eventClass = eventClass;
-	}
-
-	public int getServiceId() {
+	public Integer getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(int serviceId) {
+	public void setServiceId(Integer serviceId) {
 		this.serviceId = serviceId;
 	}
 
-	public String getAPartyMsisdn() {
-		return APartyMsisdn;
+	public String getAParty() {
+		return AParty;
 	}
 
-	public void setAPartyMsisdn(String aPartyMsisdn) {
-		APartyMsisdn = aPartyMsisdn;
+	public void setAParty(String AParty) {
+		this.AParty = AParty;
 	}
 
-	public String getBPartyMsisdn() {
-		return BPartyMsisdn;
+	public String getBParty() {
+		return BParty;
 	}
 
-	public void setBPartyMsisdn(String bPartyMsisdn) {
-		BPartyMsisdn = bPartyMsisdn;
-	}
-
-	public String getMSISDN() {
-		return MSISDN;
-	}
-
-	public void setMSISDN(String mSISDN) {
-		MSISDN = mSISDN;
-	}
-
-	public String getVLRInfo() {
-		return VLRInfo;
-	}
-
-	public void setVLRInfo(String vLRInfo) {
-		VLRInfo = vLRInfo;
+	public void setBParty(String BParty) {
+		this.BParty = BParty;
 	}
 
 	public String getLac() {
@@ -272,12 +206,12 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.lac = lac;
 	}
 
-	public String getCid() {
-		return cid;
+	public String getCellId() {
+		return cellId;
 	}
 
-	public void setCid(String cid) {
-		this.cid = cid;
+	public void setCellId(String cellId) {
+		this.cellId = cellId;
 	}
 
 	public String getApn() {
@@ -304,12 +238,12 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.applicationCategory = applicationCategory;
 	}
 
-	public String getSgsnIpAddress() {
-		return sgsnIpAddress;
+	public String getSgsnIp() {
+		return sgsnIp;
 	}
 
-	public void setSgsnIpAddress(String sgsnIpAddress) {
-		this.sgsnIpAddress = sgsnIpAddress;
+	public void setSgsnIp(String sgsnIp) {
+		this.sgsnIp = sgsnIp;
 	}
 
 	public String getImsi() {
@@ -320,20 +254,12 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.imsi = imsi;
 	}
 
-	public String getChargedPartyCountry() {
-		return chargedPartyCountry;
+	public String getSim() {
+		return sim;
 	}
 
-	public void setChargedPartyCountry(String chargedPartyCountry) {
-		this.chargedPartyCountry = chargedPartyCountry;
-	}
-
-	public String getOtherPartyCountry() {
-		return otherPartyCountry;
-	}
-
-	public void setOtherPartyCountry(String otherPartyCountry) {
-		this.otherPartyCountry = otherPartyCountry;
+	public void setSim(String sim) {
+		this.sim = sim;
 	}
 
 	public String getRoamingCarrier() {
@@ -344,11 +270,11 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.roamingCarrier = roamingCarrier;
 	}
 
-	public int getRoamingFlag() {
+	public Integer getRoamingFlag() {
 		return roamingFlag;
 	}
 
-	public void setRoamingFlag(int roamingFlag) {
+	public void setRoamingFlag(Integer roamingFlag) {
 		this.roamingFlag = roamingFlag;
 	}
 
@@ -360,11 +286,11 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.subscriberType = subscriberType;
 	}
 
-	public int getUsageUtcOffset() {
+	public Integer getUsageUtcOffset() {
 		return usageUtcOffset;
 	}
 
-	public void setUsageUtcOffset(int usageUtcOffset) {
+	public void setUsageUtcOffset(Integer usageUtcOffset) {
 		this.usageUtcOffset = usageUtcOffset;
 	}
 
@@ -384,76 +310,124 @@ public class EDRModel implements DeserializationSchema<EDRModel>, SerializationS
 		this.reason = reason;
 	}
 
-	public String getMeterUpdateArray() {
-		return meterUpdateArray;
+	public String getMeterUpdate() {
+		return meterUpdate;
 	}
 
-	public void setMeterUpdateArray(String meterUpdateArray) {
-		this.meterUpdateArray = meterUpdateArray;
+	public void setMeterUpdate(String meterUpdate) {
+		this.meterUpdate = meterUpdate;
 	}
 
-	public String getOfferInfoArray() {
-		return offerInfoArray;
+	public String getOfferInfo() {
+		return offerInfo;
 	}
 
-	public void setOfferInfoArray(String offerInfoArray) {
-		this.offerInfoArray = offerInfoArray;
+	public void setOfferInfo(String offerInfo) {
+		this.offerInfo = offerInfo;
 	}
 
-	public String getBundleInfoArray() {
-		return bundleInfoArray;
+	public String getBundleInfo() {
+		return bundleInfo;
 	}
 
-	public void setBundleInfoArray(String bundleInfoArray) {
-		this.bundleInfoArray = bundleInfoArray;
+	public void setBundleInfo(String bundleInfo) {
+		this.bundleInfo = bundleInfo;
+	}
+	
+	public String getAppliedOfferBalanceUpdateChargeGlInfo() {
+		return appliedOfferBalanceUpdateChargeGlInfo;
 	}
 
-	public String getUsageQuantityList() {
-		return usageQuantityList;
+	public void setAppliedOfferBalanceUpdateChargeGlInfo(String appliedOfferBalanceUpdateChargeGlInfo) {
+		this.appliedOfferBalanceUpdateChargeGlInfo = appliedOfferBalanceUpdateChargeGlInfo;
 	}
 
-	public void setUsageQuantityList(String usageQuantityList) {
-		this.usageQuantityList = usageQuantityList;
-	}
-
-	public String getBalanceUpdateChargeList() {
-		return balanceUpdateChargeList;
-	}
-
-	public void setBalanceUpdateChargeList(String balanceUpdateChargeList) {
-		this.balanceUpdateChargeList = balanceUpdateChargeList;
-	}
-
-	public String getAppliedOfferBundleCatalogItemArray() {
-		return appliedOfferBundleCatalogItemArray;
-	}
-
-	public void setAppliedOfferBundleCatalogItemArray(String appliedOfferBundleCatalogItemArray) {
-		this.appliedOfferBundleCatalogItemArray = appliedOfferBundleCatalogItemArray;
-	}
-
-	public int getUsageVolume() {
+	public Double getUsageVolume() {
 		return usageVolume;
 	}
 
-	public void setUsageVolume(int usageVolume) {
+	public void setUsageVolume(Double usageVolume) {
 		this.usageVolume = usageVolume;
 	}
 
-	public int getRoundedUsageVolume() {
+	public Double getRoundedUsageVolume() {
 		return roundedUsageVolume;
 	}
 
-	public void setRoundedUsageVolume(int roundedUsageVolume) {
+	public void setRoundedUsageVolume(Double roundedUsageVolume) {
 		this.roundedUsageVolume = roundedUsageVolume;
 	}
 
-	public int getChargedAmount() {
+	public Double getChargedAmount() {
 		return chargedAmount;
 	}
 
-	public void setChargedAmount(int chargedAmount) {
+	public void setChargedAmount(Double chargedAmount) {
 		this.chargedAmount = chargedAmount;
+	}
+
+	public String getMscAddress() {
+		return mscAddress;
+	}
+
+	public void setMscAddress(String mscAddress) {
+		this.mscAddress = mscAddress;
+	}
+
+	public String getNetworkCallId() {
+		return networkCallId;
+	}
+
+	public void setNetworkCallId(String networkCallId) {
+		this.networkCallId = networkCallId;
+	}
+
+	public Integer getOnNet() {
+		return onNet;
+	}
+
+	public void setOnNet(Integer onNet) {
+		this.onNet = onNet;
+	}
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+
+	public String getWalletOwner() {
+		return walletOwner;
+	}
+
+	public void setWalletOwner(String walletOwner) {
+		this.walletOwner = walletOwner;
+	}
+
+	public String getChargedPartyMccMnc() {
+		return chargedPartyMccMnc;
+	}
+
+	public void setChargedPartyMccMnc(String chargedPartyMccMnc) {
+		this.chargedPartyMccMnc = chargedPartyMccMnc;
+	}
+
+	public String getOriginationCarrier() {
+		return originationCarrier;
+	}
+
+	public void setOriginationCarrier(String originationCarrier) {
+		this.originationCarrier = originationCarrier;
+	}
+
+	public Integer getRatingGroup() {
+		return ratingGroup;
+	}
+
+	public void setRatingGroup(Integer ratingGroup) {
+		this.ratingGroup = ratingGroup;
 	}
 
 	@Override

@@ -38,11 +38,21 @@ public class OEGEvent implements DeserializationSchema<OEGEvent>, SerializationS
 	public int deleteCode;
 	public long duration;
 	public String eventId;
+	public String associatedEventId;
 	public Date eventTime;
 	public List<Integer> eventTypeArray;
 	public int flags;
 	public String glDate;
 	public long imsi;
+	
+	public String cycleCatalogItemExternalId;
+	public int cycleCatalogItemId;
+	public Date cycleEndTime;
+	public int cycleIntervalId;
+	public int cyclePurchasedItemResourceId;
+	public Date cycleStartTime;
+	public String cycleType;
+
 	public String initiatorDeviceExternalId;
 	public String initiatorDeviceId;
 	public String initiatorExternalId;
@@ -93,6 +103,62 @@ public class OEGEvent implements DeserializationSchema<OEGEvent>, SerializationS
 	public List<String> associatedEventIdList;
 	public List<BundleInfoArray> bundleInfoArray;
 	public List<OfferInfoArray> offerInfoArray;
+
+	public String getCycleCatalogItemExternalId() {
+		return cycleCatalogItemExternalId;
+	}
+
+	public void setCycleCatalogItemExternalId(String cycleCatalogItemExternalId) {
+		this.cycleCatalogItemExternalId = cycleCatalogItemExternalId;
+	}
+
+	public int getCycleCatalogItemId() {
+		return cycleCatalogItemId;
+	}
+
+	public void setCycleCatalogItemId(int cycleCatalogItemId) {
+		this.cycleCatalogItemId = cycleCatalogItemId;
+	}
+
+	public Date getCycleEndTime() {
+		return cycleEndTime;
+	}
+
+	public void setCycleEndTime(Date cycleEndTime) {
+		this.cycleEndTime = cycleEndTime;
+	}
+
+	public int getCycleIntervalId() {
+		return cycleIntervalId;
+	}
+
+	public void setCycleIntervalId(int cycleIntervalId) {
+		this.cycleIntervalId = cycleIntervalId;
+	}
+
+	public int getCyclePurchasedItemResourceId() {
+		return cyclePurchasedItemResourceId;
+	}
+
+	public void setCyclePurchasedItemResourceId(int cyclePurchasedItemResourceId) {
+		this.cyclePurchasedItemResourceId = cyclePurchasedItemResourceId;
+	}
+
+	public Date getCycleStartTime() {
+		return cycleStartTime;
+	}
+
+	public void setCycleStartTime(Date cycleStartTime) {
+		this.cycleStartTime = cycleStartTime;
+	}
+
+	public String getCycleType() {
+		return cycleType;
+	}
+
+	public void setCycleType(String cycleType) {
+		this.cycleType = cycleType;
+	}
 
 	public String getAggregationId() {
 		return aggregationId;
@@ -686,12 +752,12 @@ public class OEGEvent implements DeserializationSchema<OEGEvent>, SerializationS
 		this.event_type = event_type;
 	}
 
-	public List<String> getAssociatedEventIdList() {
-		return associatedEventIdList;
+	public String getAssociatedEventId() {
+		return associatedEventId;
 	}
 
-	public void setAssociatedEventIdList(List<String> associatedEventIdList) {
-		this.associatedEventIdList = associatedEventIdList;
+	public void setAssociatedEventId(String associatedEventId) {
+		this.associatedEventId = associatedEventId;
 	}
 
 	public List<BundleInfoArray> getBundleInfoArray() {

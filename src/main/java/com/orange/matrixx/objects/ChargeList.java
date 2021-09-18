@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChargeList {
-	public int amount;
+	public double amount;
 	public int appliedOfferIndex;
 	public int balanceUpdateIndex;
 	public String impactSource;
@@ -16,11 +16,11 @@ public class ChargeList {
 	public int usageQuantity;
 	public int usageQuantityUnit;
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 

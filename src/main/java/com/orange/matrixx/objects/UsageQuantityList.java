@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UsageQuantityList {
 	public int flags;
-	public int msgAmount;
+	public double msgAmount;
 	public String mtx_container_name;
 	public int mtx_ext_ver;
 	public int mtx_sys_ver;
 	public String quantityType;
 	public String quantityUnit;
-	public int ratingAmount;
+	public double ratingAmount;
 
 	public int getFlags() {
 		return flags;
@@ -21,11 +21,11 @@ public class UsageQuantityList {
 		this.flags = flags;
 	}
 
-	public int getMsgAmount() {
+	public double getMsgAmount() {
 		return msgAmount;
 	}
 
-	public void setMsgAmount(int msgAmount) {
+	public void setMsgAmount(double msgAmount) {
 		this.msgAmount = msgAmount;
 	}
 
@@ -69,11 +69,11 @@ public class UsageQuantityList {
 		this.quantityUnit = quantityUnit;
 	}
 
-	public int getRatingAmount() {
+	public double getRatingAmount() {
 		return ratingAmount;
 	}
 
-	public void setRatingAmount(int ratingAmount) {
+	public void setRatingAmount(double ratingAmount) {
 		this.ratingAmount = ratingAmount;
 	}
 }
