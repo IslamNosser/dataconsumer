@@ -17,28 +17,30 @@ public class EDRModeling implements MapFunction<OEGEvent, EDRModel> {
 		edrModel.setEventId(value.getEventId());
 		edrModel.setAssociatedEventId(value.getAssociatedEventId());
 		edrModel.setEventTime(value.getEventTime());
-		switch (value.getMtx_container_name()) {
-		case "OEGVoiceEvent":
-			edrModel.setEventType(1);
-			break;
-		case "OEGDataEvent":
-			edrModel.setEventType(2);
-			break;
-		case "OEGTextEvent":
-			edrModel.setEventType(3);
-			break;
-		case "OEGPurchaseEvent":
-			edrModel.setEventType(4);
-			break;
-		case "OEGRecurringEvent":
-			edrModel.setEventType(5);
-			break;
-		default:
+		if(value.getMtx_container_name() != null) {
+			switch (value.getMtx_container_name()) {
+				case "OEGVoiceEvent":
+					edrModel.setEventType(1);
+					break;
+				case "OEGDataEvent":
+					edrModel.setEventType(2);
+					break;
+				case "OEGTextEvent":
+					edrModel.setEventType(3);
+					break;
+				case "OEGPurchaseEvent":
+					edrModel.setEventType(4);
+					break;
+				case "OEGRecurringEvent":
+					edrModel.setEventType(5);
+					break;
+				default:
+			}
 		}
-		if (value.getaPartyMsisdn() == null || value.getaPartyMsisdn().isEmpty()) {
-			edrModel.setAParty(value.getmSISDN());
-		} else {
+		if (value.getaPartyMsisdn() != null) {
 			edrModel.setAParty(value.getaPartyMsisdn());
+		} else if(value.getmSISDN() != null) {
+			edrModel.setAParty(value.getmSISDN());
 		}
 		edrModel.setBParty(value.getbPartyMsisdn());
 		edrModel.setApn(value.getaPN());
@@ -46,22 +48,26 @@ public class EDRModeling implements MapFunction<OEGEvent, EDRModel> {
 		edrModel.setLac(value.getlAC());
 		edrModel.setCallType(value.getCallType());
 		edrModel.setCallUsageType(value.getCallUsageType());
-		edrModel.setImsi(String.valueOf(value.getImsi()));
+		if(value.getImsi() != null) {
+			edrModel.setImsi(String.valueOf(value.getImsi()));
+		}
 		edrModel.setSim(value.getInitiatorDeviceExternalId());
 
 		edrModel.setMscAddress(value.getMscAddress());
 		edrModel.setNetworkCallId(value.getNetworkCallReferenceId());
-		if (value.getOnNet() != null && value.getOnNet() == "Onnet") {
-			edrModel.setOnNet(1);
-		} else if (value.getOnNet() != null && value.getOnNet() == "Offnet") {
-			edrModel.setOnNet(0);
+		if (value.getOnNet() != null && value.getOnNet().equals("Onnet")) {
+			edrModel.setOnNet(Integer.valueOf(1));
+		} else if (value.getOnNet() != null && value.getOnNet().equals("Offnet")) {
+			edrModel.setOnNet(Integer.valueOf(0));
 		}
 		edrModel.setSessionId(value.getSessionId());
 		edrModel.setWalletId(value.getWalletId());
 		edrModel.setWalletOwner(value.getWalletOwnerExternalId());
 		edrModel.setUsageUtcOffset(value.getUsageUtcOffset());
 		edrModel.setSubscriberType(value.getSubscriberType());
-		edrModel.setRoamingFlag(Integer.valueOf(value.getRoamingFlag()));
+		if(value.getRoamingFlag() != null) {
+			edrModel.setRoamingFlag(Integer.valueOf(value.getRoamingFlag()));
+		}
 		edrModel.setChargedPartyMccMnc(value.getChargedPartyMccMnc());
 		edrModel.setOriginationCarrier(value.getOriginationCarrier());
 		edrModel.setRoamingCarrier(value.getRoamingCarrier());

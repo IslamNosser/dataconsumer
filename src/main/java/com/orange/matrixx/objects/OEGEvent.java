@@ -456,11 +456,11 @@ public class OEGEvent implements DeserializationSchema<OEGEvent>, SerializationS
 		this.glDate = glDate;
 	}
 
-	public long getImsi() {
+	public Long getImsi() {
 		return imsi;
 	}
 
-	public void setImsi(long imsi) {
+	public void setImsi(Long imsi) {
 		this.imsi = imsi;
 	}
 
