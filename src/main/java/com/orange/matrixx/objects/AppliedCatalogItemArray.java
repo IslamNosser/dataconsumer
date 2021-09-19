@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class AppliedCatalogItemArray {
 	public String catalogItemExternalId;
 	public int catalogItemId;
-	public List<CatalogItemParameterArray> catalogItemParameterArray;
+//	public List<CatalogItemParameterArray> catalogItemParameterArray;
 	public int catalogItemResourceId;
 	public CatalogItemTemplateAttr catalogItemTemplateAttr;
 	public String mtx_container_name;
@@ -31,13 +31,13 @@ public class AppliedCatalogItemArray {
 		this.catalogItemId = catalogItemId;
 	}
 
-	public List<CatalogItemParameterArray> getCatalogItemParameterArray() {
-		return catalogItemParameterArray;
-	}
-
-	public void setCatalogItemParameterArray(List<CatalogItemParameterArray> catalogItemParameterArray) {
-		this.catalogItemParameterArray = catalogItemParameterArray;
-	}
+//	public List<CatalogItemParameterArray> getCatalogItemParameterArray() {
+//		return catalogItemParameterArray;
+//	}
+//
+//	public void setCatalogItemParameterArray(List<CatalogItemParameterArray> catalogItemParameterArray) {
+//		this.catalogItemParameterArray = catalogItemParameterArray;
+//	}
 
 	public int getCatalogItemResourceId() {
 		return catalogItemResourceId;

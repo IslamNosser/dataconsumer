@@ -59,7 +59,7 @@ public class App {
 							(statement, edrModel) -> {
 								statement.setString(1, edrModel.getEventId());
 								if(edrModel.getEventTime() != null && edrModel.getEventTime().getTime() != 0) {
-								statement.setDate(2, new Date(edrModel.getEventTime().getTime()));
+									statement.setDate(2, new Date(edrModel.getEventTime().getTime()));
 								} else {
 									statement.setDate(2,new Date(0));
 								}
