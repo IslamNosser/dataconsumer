@@ -58,7 +58,11 @@ public class App {
 							"INSERT INTO MTX_USAGE_T (EVENTID,EVENTTIME,EVENTTYPE,APARTY,BPARTY,CALLTYPE,CALLUSAGETYPE,ONNET,SESSIONID,USAGEVOLUME,ROUNDEDUSAGEVOLUME,CHARGEDAMOUNT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
 							(statement, edrModel) -> {
 								statement.setString(1, edrModel.getEventId());
+								if(edrModel.getEventTime() != null && edrModel.getEventTime().getTime() != 0) {
 								statement.setDate(2, new Date(edrModel.getEventTime().getTime()));
+								} else {
+									statement.setDate(2,new Date(0));
+								}
 								if (edrModel.getEventType() != null)
 									statement.setInt(3, edrModel.getEventType().intValue());
 								else
